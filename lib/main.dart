@@ -4,7 +4,14 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,6 +21,13 @@ class MyApp extends StatelessWidget {
           ),
           body: Column(
             children: [
+              Container(
+                margin: EdgeInsets.all(10.0),
+                child: RaisedButton(
+                  onPressed: () {},
+                  child: Text('Add Product'),
+                ),
+              ),
               Card(
                 child: Column(
                   children: <Widget>[
