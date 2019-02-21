@@ -1,43 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'package:mythings/product_manager.dart';
+
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyAppState();
-  }
-}
-
-class _MyAppState extends State {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // Scaffold es un layout para la mayoría de los Material Components.
       home: Scaffold(
           appBar: AppBar(
             title: Text('EasyList'),
           ),
-          body: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.all(10.0),
-                child: RaisedButton(
-                  onPressed: () {},
-                  child: Text('Add Product'),
-                ),
-              ),
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Image.asset('assets/food.jpg'),
-                    Text('Mi comidaaaa')
-                  ],
-                ),
-              ),
-            ],
-          )),
+          body: ProductManager('Food Tester')
+      ),
     );
   }
 }
