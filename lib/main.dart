@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter/rendering.dart';
 
 import 'package:mythings/product_manager.dart';
 
 void main() {
+  //debugPaintSizeEnabled = true;
   runApp(MyApp());
 }
 
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text('EasyList'),
           ),
-          body: ProductManager('Food Tester')
+          body: ProductManager()
       ),
     );
   }

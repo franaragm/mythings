@@ -8,12 +8,11 @@ import 'package:mythings/product_control.dart';
 // los valores proporcionados por el padre y usados por el método
 // build del State. Los campos en una subclase Widget siempre se marcan como "final".
 class ProductManager extends StatefulWidget {
-
   // Los campos en una subclase de Widgets siempre están marcados como "final".
   final String startingProduct;
 
   // constructor
-  ProductManager(this.startingProduct){
+  ProductManager({this.startingProduct}) {
     print('[product manager widget] constructor');
   }
 
@@ -23,7 +22,7 @@ class ProductManager extends StatefulWidget {
     return _ProductManagerState();
   }
 
-  /*
+/*
   @override
   _ProductManagerState createState() => _ProductManagerState();
   */
@@ -36,7 +35,9 @@ class _ProductManagerState extends State<ProductManager> {
   void initState() {
     print('[product manager state] initState()');
     super.initState();
-    _products.add(widget.startingProduct);
+    if (widget.startingProduct != null) {
+      _products.add(widget.startingProduct);
+    }
   }
 
   @override
@@ -60,10 +61,13 @@ class _ProductManagerState extends State<ProductManager> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.all(10.0),
-          child: ProductControl(_addProduct)
+            margin: EdgeInsets.all(10.0),
+            child: ProductControl(_addProduct)
         ),
-        Products(_products)
-      ],);
+        Expanded(
+            child: Products(_products)
+        )
+      ],
+    );
   }
 }
