@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       // Scaffold es un layout para la mayoría de los Material Components.
       home: Scaffold(
           appBar: AppBar(
-            title: Text('EasyList'),
+            title: Text('ListThings'),
           ),
           body: ProductManager()
       ),
