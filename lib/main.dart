@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/rendering.dart';
-
-import 'package:mythings/pages/home.dart';
+import 'package:mythings/pages/auth.dart';
 
 void main() {
   //debugPaintSizeEnabled = true;
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.deepPurple
       ),
       // Scaffold es un layout para la mayoría de los Material Components.
-      home: HomePage()
+      home: AuthPage()
     );
   }
 }
