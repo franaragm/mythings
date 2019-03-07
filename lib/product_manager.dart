@@ -9,7 +9,7 @@ import 'package:mythings/product_control.dart';
 // build del State. Los campos en una subclase Widget siempre se marcan como "final".
 class ProductManager extends StatefulWidget {
   // Los campos en una subclase de Widgets siempre están marcados como "final".
-  final String startingProduct;
+  final Map<String, String> startingProduct;
 
   // constructor
   ProductManager({this.startingProduct}) {
@@ -29,7 +29,7 @@ class ProductManager extends StatefulWidget {
 }
 
 class _ProductManagerState extends State<ProductManager> {
-  List<String> _products = [];
+  List<Map<String, String>> _products = [];
 
   @override
   void initState() {
@@ -46,7 +46,7 @@ class _ProductManagerState extends State<ProductManager> {
     super.didUpdateWidget(oldWidget);
   }
 
-  void _addProduct(String product) {
+  void _addProduct(Map<String, dynamic> product) {
     // Cuando un usuario pulsa el boton se añade un producto, necesitamos cambiar _products
     // dentro de una llamada setState para activar un rebuild. El framework entonces llama a
     // build (que renderiza el listado de productos) que actualiza la apariencia visual de la aplicación.
