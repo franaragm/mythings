@@ -14,11 +14,11 @@ class ProductPage extends StatelessWidget {
         content: Text('This action cannot be undone!'),
         actions: <Widget>[
           FlatButton(child: Text('DISCARD'), onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context); // close overlay
           },),
           FlatButton(child: Text('CONTINUE'), onPressed: () {
-            Navigator.pop(context);
-            Navigator.pop(context, true);
+            Navigator.pop(context); // close overlay
+            Navigator.pop(context, true); // close the page
           },),
         ],
       );
