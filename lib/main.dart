@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mythings/pages/products_admin.dart';
 import 'package:mythings/pages/products_page.dart';
 import 'package:mythings/pages/product.dart';
+import 'package:mythings/pages/auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,7 +48,8 @@ class _MyAppState extends State<MyApp> {
       // Scaffold es un layout para la mayoría de los Material Components.
       // home: AuthPage(),
       routes: {
-        '/': (BuildContext context) => ProductsPage(_products),
+        '/': (BuildContext context) => AuthPage(),
+        '/products': (BuildContext context) => ProductsPage(_products),
         '/admin': (BuildContext context) => ProductsAdminPage(_addProduct, _deleteProduct)
       },
       onGenerateRoute: (RouteSettings settings) {
