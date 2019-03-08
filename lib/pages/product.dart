@@ -18,7 +18,7 @@ class ProductPage extends StatelessWidget {
           },),
           FlatButton(child: Text('CONTINUE'), onPressed: () {
             Navigator.pop(context); // close overlay
-            Navigator.pop(context, true); // close the page
+            Navigator.pop(context, true); // close this page in stack
           },),
         ],
       );
