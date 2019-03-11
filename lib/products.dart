@@ -17,12 +17,14 @@ class Products extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  products[index]['title'],
-                  style: TextStyle(
-                      fontSize: 26.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Oswald'),
+                Container(
+                  child: Text(
+                    products[index]['title'],
+                    style: TextStyle(
+                        fontSize: 26.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Oswald'),
+                  ),
                 ),
                 SizedBox(
                   width: 8.0,
@@ -39,6 +41,14 @@ class Products extends StatelessWidget {
                 )
               ],
             ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white70, width: 1.0),
+              borderRadius: BorderRadius.circular(4.0),
+            ),
+            child: Text('Union Square, San Francisco'),
           ),
           ButtonBar(
             alignment: MainAxisAlignment.center,
