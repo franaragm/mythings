@@ -12,9 +12,12 @@ class ProductCreatePage extends StatefulWidget {
 }
 
 class _ProductCreatePageState extends State<ProductCreatePage> {
-  String _titleValue;
-  String _descriptionValue;
-  double _priceValue;
+  final Map<String, dynamic> _formData = {
+    'title': null,
+    'description': null,
+    'price': null,
+    'image': 'assets/charger.jpg'
+  };
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget _buildTitleTextField() {
@@ -22,14 +25,12 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
       decoration: InputDecoration(labelText: 'Product Title'),
       validator: (String value) {
         //if(value.trim().length <= 0) {
-        if(value.isEmpty || value.length < 5) {
+        if (value.isEmpty || value.length < 5) {
           return 'Title is required and should be 5+ characters long.';
         }
       },
       onSaved: (String value) {
-        setState(() {
-          _titleValue = value;
-        });
+        _formData['title'] = value;
       },
     );
   }
@@ -40,14 +41,12 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
       decoration: InputDecoration(labelText: 'Product Description'),
       validator: (String value) {
         //if(value.trim().length <= 0) {
-        if(value.isEmpty || value.length < 5) {
+        if (value.isEmpty || value.length < 5) {
           return 'Description is required and should be 10+ characters long.';
         }
       },
       onSaved: (String value) {
-        setState(() {
-          _descriptionValue = value;
-        });
+        _formData['description'] = value;
       },
     );
   }
@@ -58,30 +57,24 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
       decoration: InputDecoration(labelText: 'Product Price'),
       validator: (String value) {
         //if(value.trim().length <= 0) {
-        if(value.isEmpty || !RegExp(r'^(?:[1-9]\d*|0)?(?:[.,]\d+)?$').hasMatch(value)) {
+        if (value.isEmpty ||
+            !RegExp(r'^(?:[1-9]\d*|0)?(?:[.,]\d+)?$').hasMatch(value)) {
           return 'Price is required and should be a number.';
         }
       },
       onSaved: (String value) {
-        setState(() {
-          _priceValue = double.parse(value.replaceFirst(RegExp(r','), '.')) ;
-        });
+        _formData['price'] =
+            double.parse(value.replaceFirst(RegExp(r','), '.'));
       },
     );
   }
 
   void _submitForm() {
-    if(!_formKey.currentState.validate()) {
+    if (!_formKey.currentState.validate()) {
       return;
     }
     _formKey.currentState.save();
-    final Map<String, dynamic> product = {
-      'title': _titleValue,
-      'description': _descriptionValue,
-      'price': _priceValue,
-      'image': 'assets/charger.jpg'
-    };
-    widget.addProduct(product);
+    widget.addProduct(_formData);
     Navigator.pushReplacementNamed(context, '/products');
   }
 
