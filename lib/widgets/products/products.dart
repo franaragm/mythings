@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:scoped_model/scoped_model.dart';
 import 'package:mythings/widgets/products/product_card.dart';
+import 'package:mythings/scoped_models/products.dart';
 import 'package:mythings/models/product.dart';
 
 class Products extends StatelessWidget {
-  final List<Product> products;
-
-  Products(this.products) {
-    print('[Products Widget] Constructor');
-  }
-
-  Widget _buildProductList() {
+  Widget _buildProductList(List<Product> products) {
     Widget productCards;
 
     if (products.length > 0) {
@@ -27,8 +23,8 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Column es un diseño vertical y lineal.
-    print('[Products Widget] build()');
-    return _buildProductList();
+    return ScopedModelDescendant<ProductsModel>(builder: (BuildContext context, Widget child, ProductsModel model) {
+      return _buildProductList(model.products);
+    },);
   }
 }
